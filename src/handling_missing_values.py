@@ -88,5 +88,33 @@ class FillingMissingValues(MissingValueHandlingStrategy):
         return df_cleaned
     
     
-#class MissingValueHandler:
-    
+class MissingValueHandler:
+    def ___init__(self,strategy:MissingValueHandlingStrategy):
+        """Initializes the strategy for handling data
+
+        Args:
+            strategy (MissingValueHandlingStrategy): THe strategy baesed on which data is handled
+        """
+        
+        self._strategy = strategy
+        
+    def set_strategy(self,strategy:MissingValueHandlingStrategy):
+        """Sets strategy based on which data is handled for missing values
+        
+        Args: 
+        strategy (MissingValueHandlingStrategy) : The strategy baesed on which data is handled"""
+        
+        self._strategy = strategy
+        
+    def execute_strategy(self,df:pd.DataFrame):
+        """Executes the strategy for filling data
+
+        Args:
+            df (pd.DataFrame): The dataframe for which the missing values are handled
+        """
+        
+        self._strategy.handle(df)
+        
+
+if __name__ == "__main__":
+    pass
